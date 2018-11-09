@@ -1,0 +1,57 @@
+#Q1 Re-format the code according to the style guide
+```{r}
+prime <- function(n) {
+  
+  if (n %% 1 != 0 | n < 0) {
+    return (FALSE)
+  } else if (n == 1) {
+    return (FALSE)
+  } else if (n == 2) {
+    return (TRUE)
+  } else {
+    
+    for (i in 2:(sqrt(n))) {
+      if (n %% i == 0) {
+        return (FALSE)
+      }
+    }
+    return (TRUE)
+  }
+}
+```
+#Q2 Re-format and debug the function find_runs that finds consecutive ones in a given vector.
+```{r}
+find_runs = function(x, k) {
+  
+  n = length(x)
+  runs = NULL
+  
+  for (i in 1:(n - k)) {
+    if (all(x[i:(i + k - 1)] == 1)) runs = c(runs, i)
+  }
+  return (runs)
+}
+find_runs(c(1, 0, 0, 1, 1, 0, 1, 1, 1), 2)
+```
+#Q3: Dubug the following function that should return a sorted vector in ascending order:
+```{r}
+sort_vec = function(x) {
+  
+  if (length(x) < 2) return (x)
+
+  for(last in length(x):2) {
+    for(first in 1:(last - 1)) {
+      if(x[first] > x[first + 1]) {
+        temp = x[first]
+        x[first] = x[first + 1]
+        x[first + 1] = temp
+      }
+    }
+  }
+return(x)
+}
+#TEST:
+test <- c(3, 2, 1, 5, 4)
+sort_vec(test)
+```
+
